@@ -1,5 +1,6 @@
 from pathlib import Path
 import subprocess
+from filecmp import dircmp
 
 in_path = "./in/cpp/"
 out_path = "./out/java/"
@@ -41,26 +42,17 @@ def main():
             print(nc["error"])
             print("")
 
-
-    # difflib
-    # filecmp(file1, file2)
-    # dircmp
-    # java -cp out_dir file
-
-    # if not Path(test_generated_out_path).exists():
-    #     print("Generating test results out folder.")
-    #     Path(test_generated_out_path).mkdir(parents=True, exist_ok=True)
-
     success = []
     fail = []
     other = []
     for c in compiled:
         basename = c["filename"].replace(".java", "")
-        classname = c["filename"] + ".class"
+        # classname = basename + ".class"
         # print(classname)
         test_in = Path(test_in_path + basename)
-        if not test_in.exists() or test_in.is_dir():
-            other.append({"filename": classname, "error": "Dir not found"})
+        if not test_in.exists() or test_in.is_file():
+            other.append({"filename": basename, "error": "Dir not found"})
+            continue
 
         test_gen_out = Path(test_generated_out_path + basename + '/')
         if not test_gen_out.exists():
@@ -70,6 +62,26 @@ def main():
             outname = test.name.replace(".in", ".out")
             with open(test) as sin, open(test_gen_out.joinpath(outname), "w") as sout:
                 subprocess.run(["java", "-cp", out_path, basename], stdin=sin, stdout=sout)
+        
+        test_out = Path(test_out_path + basename)
+        dcmp = dircmp(test_gen_out, test_out)
+        diff_files = dcmp.diff_files
+        if len(diff_files):
+            fail.append({
+                "filename": basename,
+                "diff": [f for f in diff_files]
+            })
+        else:
+            success.append({
+                "filename": basename
+            })
+    
+    print(f"Test success rate: {len(success) / len(compiled) * 100}%")
+    print(f"Success: {len(success)}. Fails: {len(fail)}. Other: {len(other)}.")
+    print(success)
+    print(fail)
+    print(other)
+
 
 if __name__ == "__main__":
     main()
