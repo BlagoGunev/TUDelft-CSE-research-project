@@ -1,0 +1,45 @@
+#include<stdio.h>
+int main(){
+    int k;
+    scanf("%d",&k);
+    if(k==1) printf("1");
+if(k==2) printf("3");
+if(k==3) printf("15");
+if(k==4) printf("63");
+if(k==5) printf("4095");
+if(k==6) printf("65535");
+if(k==7) printf("262143");
+if(k==8) printf("73741816");
+if(k==9) printf("536396503");
+if(k==10) printf("140130950");
+if(k==11) printf("487761805");
+if(k==12) printf("319908070");
+if(k==13) printf("106681874");
+if(k==14) printf("373391776");
+if(k==15) printf("317758023");
+if(k==16) printf("191994803");
+if(k==17) printf("416292236");
+if(k==18) printf("110940209");
+if(k==19) printf("599412198");
+if(k==20) printf("383601260");
+if(k==21) printf("910358878");
+if(k==22) printf("532737550");
+if(k==23) printf("348927936");
+if(k==24) printf("923450985");
+if(k==25) printf("470083777");
+if(k==26) printf("642578561");
+if(k==27) printf("428308066");
+if(k==28) printf("485739298");
+if(k==29) printf("419990027");
+if(k==30) printf("287292016");
+if(k==31) printf("202484167");
+if(k==32) printf("389339971");
+if(k==33) printf("848994100");
+if(k==34) printf("273206869");
+if(k==35) printf("853092282");
+if(k==36) printf("411696552");
+if(k==37) printf("876153853");
+if(k==38) printf("90046024");
+if(k==39) printf("828945523");
+if(k==40) printf("697988359");
+}

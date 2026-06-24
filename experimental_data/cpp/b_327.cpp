@@ -1,0 +1,3 @@
+#include<iostream>
+int i,n;int main(){for(std::cin>>n;i<n;std::cout<<++i+n<<" ");
+}

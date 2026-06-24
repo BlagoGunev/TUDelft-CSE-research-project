@@ -1,0 +1,74 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+int jilu[12],n,i,j,cnt;
+int main()
+{
+	scanf("%d",&n);
+	while(n>=92378)
+	{
+		jilu[10]++;
+		n-=92378;
+	}
+	while(n>=48620)
+	{
+		jilu[9]++;
+		n-=48620;		
+	}
+	while(n>=24310)
+	{
+		jilu[8]++;
+		n-=24310;
+	}
+	while(n>=11440)
+	{
+		jilu[7]++;
+		n-=11440;
+	}
+	while(n>=5005)
+	{
+		jilu[6]++;
+		n-=5005;
+	}
+	while(n>=2002)
+	{
+		jilu[5]++;
+		n-=2002;
+	}
+	while(n>=715)
+	{
+		jilu[4]++;
+		n-=715;
+	}
+	while(n>=220)
+	{
+		jilu[3]++;
+		n-=220;
+	}
+		while(n>=55)
+	{
+		jilu[2]++;
+		n-=55;
+	}
+		while(n>=10)
+	{
+		jilu[1]++;
+		n-=10;
+	}
+			while(n>=1)
+	{
+		jilu[0]++;
+		n-=1;
+	}
+	
+	for(i=0;i<=10;i++)
+	{
+		cout<<"abcdefghi";
+		cnt+=9;
+
+		for(j=1;j<=jilu[i];j++)cout<<"j";
+		cnt+=jilu[i];
+	}
+	for(i=1;i<=200-cnt;i++)cout<<"k";
+	cout<<" abcdefghij";
+}

@@ -1,0 +1,293 @@
+//╔╗──────╔╗  //
+
+//║║──────║║  //
+
+//║║╔╗╔╦══╣║╔╗//
+
+//║║║║║║╔═╣╚╝╝//
+
+//║╚╣╚╝║╚═╣╔╗╗//
+
+//╚═╩══╩══╩╝╚╝//
+
+/*
+
+ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠤⠖⠚⢉⣩⣭⡭⠛⠓⠲⠦⣄⡀⠀⠀⠀⠀⠀⠀
+
+⠀⠀⠀⠀⠀⠀⢀⡴⠋⠁⠀⠀⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⢦⡀⠀⠀⠀⠀
+
+⠀⠀⠀⠀⢀⡴⠃⢀⡴⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣆⠀⠀⠀
+
+⠀⠀⠀⠀⡾⠁⣠⠋⠀⠈⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢧⠀⠀
+
+⠀⠀⠀⣸⠁⢰⠃⠀⠀⠀⠈⢣⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣇⠀
+
+⠀⠀⠀⡇⠀⡾⡀⠀⠀⠀⠀⣀⣹⣆⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⠀
+
+⠀⠀⢸⠃⢀⣇⡈⠀⠀⠀⠀⠀⠀⢀⡑⢄⡀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇
+
+⠀⠀⢸⠀⢻⡟⡻⢶⡆⠀⠀⠀⠀⡼⠟⡳⢿⣦⡑⢄⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇
+
+⠀⠀⣸⠀⢸⠃⡇⢀⠇⠀⠀⠀⠀⠀⡼⠀⠀⠈⣿⡗⠂⠀⠀⠀⠀⠀⠀⠀⢸⠁
+
+⠀⠀⡏⠀⣼⠀⢳⠊⠀⠀⠀⠀⠀⠀⠱⣀⣀⠔⣸⠁⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀
+
+⠀⠀⡇⢀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⢸⠃⠀
+
+⠀⢸⠃⠘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⠀⢀⠀⠀⠀⠀⠀⣾⠀⠀
+
+⠀⣸⠀⠀⠹⡄⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠀⡞⠀⠀⠀⠸⠀⠀⠀⠀⠀⡇⠀⠀
+
+⠀⡏⠀⠀⠀⠙⣆⠀⠀⠀⠀⠀⠀⠀⢀⣠⢶⡇⠀⠀⢰⡀⠀⠀⠀⠀⠀⡇⠀⠀
+
+⢰⠇⡄⠀⠀⠀⡿⢣⣀⣀⣀⡤⠴⡞⠉⠀⢸⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⣧⠀⠀
+
+⣸⠀⡇⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⢹⠀⠀⢸⠀⠀⢀⣿⠇⠀⠀⠀  ⠀⢸⠀
+
+⣿⠀⡇⠀⠀⠀⠀⠀⢀⡤⠤⠶⠶⠾⠤⠄⢸⠀⡀⠸⣿⣀⠀⠀⠀⠀⠀⠈⣇⠀
+
+⡇⠀⡇⠀⠀⡀⠀⡴⠋⠀⠀⠀⠀⠀⠀⠀⠸⡌⣵⡀⢳⡇⠀⠀⠀⠀⠀⠀⢹⡀
+
+⡇⠀⠇⠀⠀⡇⡸⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠮⢧⣀⣻⢂⠀⠀⠀⠀⠀⠀⢧
+
+⣇⠀⢠⠀⠀⢳⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡎⣆⠀⠀⠀⠀⠀⠘
+
+⢻⠀⠈⠰⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⠘⢮⣧⡀⠀⠀⠀⠀
+
+⠸⡆⠀⠀⠇⣾⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠆⠀⠀⠀⠀⠀⠀⠀⠙⠳⣄⡀⢢⡀
+
+ */
+
+
+
+#include <iostream>
+
+#include <fstream>
+
+#include <vector>
+
+#include <algorithm>
+
+#include <string>
+
+#include <cctype>
+
+#include <stack>
+
+#include <cmath>
+
+#include <set>
+
+#include <map>
+
+#include <iomanip>
+
+#include <queue>
+
+#include <bitset>
+
+
+
+#define inf 2000000000
+
+#define PI  3.141592653589793116
+
+#define var int64_t
+
+
+
+using namespace std;
+
+using pii = pair <int, int>;
+
+using vl = vector<var>;
+
+using vi = vector<int>;
+
+using vvi = vector<vi>;
+
+
+
+var gcd(var a, var b) {
+
+    while (a != 0)  {
+
+        b %= a;
+
+        swap(a, b);
+
+    }
+
+    return b;
+
+}
+
+var lcm(var a, var b) {
+
+    return (a / gcd(a, b)) * b;
+
+}
+
+
+
+bool check(var a, var b, var p, var m) {
+
+    if (p == m) {
+
+        return true;
+
+    }
+
+    if (a == b && p != m) {
+
+        return false;
+
+    }
+
+    var t = (p - m);
+
+    if (t * b % (b - a) != 0) {
+
+        return false;
+
+    }
+
+    if (t * b / (b - a) >= -m && t * b / (b - a) <= p) {
+
+//        cout << "TIK\n";
+
+        return true;
+
+    }
+
+    return false;
+
+}
+
+
+
+void solve() {
+
+    int n;
+
+    cin >> n;
+
+    string s;
+
+    cin >> s;
+
+    var PP = 0;
+
+    var MM = 0;
+
+    for (char c: s) {
+
+        PP+= (c=='+');
+
+        MM+= (c=='-');
+
+    }
+
+
+
+    int q;
+
+    cin >> q;
+
+    var a, b;
+
+    var p, m;
+
+    for (int i = 0; i < q; ++i) {
+
+        cin >> a >> b;
+
+        p = PP;
+
+        m = MM;
+
+        if (check(a,b,p,m)) {
+
+            cout << "YES\n";
+
+            continue;
+
+        } else {
+
+            cout << "NO\n";
+
+            continue;
+
+        }
+
+
+
+        var noq = lcm(a, b);
+
+        var M   = min(a, b);
+
+        var h   = max(a, b);
+
+        if (p > m) {
+
+            var d = p/(noq/M);
+
+            var w = m/(noq/h);
+
+            p -= min(d, w) * (noq/M);
+
+            m -= min(d, w) * (noq/h);
+
+        } else {
+
+            var d = p/(noq/h);
+
+            var w = m/(noq/M);
+
+            p -= min(d, w) * (noq/h);
+
+            m -= min(d, w) * (noq/M);
+
+        }
+
+        if (check(a,b,p,m)) {
+
+            cout << "YES\n";
+
+            continue;
+
+        }
+
+        cout << "NO\n";
+
+
+
+
+
+    }
+
+}
+
+
+
+int main() {
+
+    ios_base::sync_with_stdio(false);
+
+    cout.tie(nullptr);
+
+    cin.tie(nullptr);
+
+    int tt(1);
+
+//    cin >> tt;
+
+    while (tt--) {
+
+        solve();
+
+    }
+
+    return 0;
+
+}

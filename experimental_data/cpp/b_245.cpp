@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#include <stdio.h>
+
+char str[60];
+unsigned int i;
+int main()
+{
+fgets(str, sizeof(str), stdin);
+int i,pos;
+if(str[0]=='h') printf("http://"),i=4;
+else
+printf("ftp://"),i=3;
+putchar(str[i++]);
+
+
+for(;str[i]!='r' || str[i+1]!='u';i++)
+putchar(str[i]);
+printf(".ru");
+if(str[i+2])
+{
+str[i+1]='/';
+puts(str+i+1);
+}
+return 0;
+}

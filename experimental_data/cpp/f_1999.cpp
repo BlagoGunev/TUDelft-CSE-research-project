@@ -1,0 +1,122 @@
+// CF template, version 3.0
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define improvePerformance ios_base::sync_with_stdio(false); cin.tie(0)
+#define getTest int t; cin >> t
+#define eachTest for (int _var=0;_var<t;_var++)
+#define get(name) int (name); cin >> (name)
+#define out(o) cout << (o)
+#define getList(cnt, name) vector<int> (name); for (int _=0;_<(cnt);_++) { get(a); (name).push_back(a); }
+#define sortl(name) sort((name).begin(), (name).end())
+#define rev(name) reverse((name).begin(), (name).end())
+#define forto(name, var) for (int (var) = 0; (var) < (name); (var)++)
+#define decision(b) if (b){out("YES");}else{out("NO");}
+
+#define int long long int
+
+template <typename T, typename I>
+struct segtree {
+    int n;
+    vector<T> tree;
+    vector<I> initial;
+    T id;
+
+    segtree(int i_n, vector<I> i_initial, T i_id): n(i_n), initial(i_initial), id(i_id) {
+        tree.resize(4 * n);
+    }
+
+    T conquer(T left, T right) {
+        // write your conquer function
+    }
+
+    T value(I inp) {
+        // write your value function
+    }
+
+    void build(int v, int l, int r) {
+        if (l == r) tree[v] = value(initial[l]);
+        else {
+            int middle = (l + r) / 2;
+            build(2 * v, l, middle);
+            build(2 * v + 1, middle + 1, r);
+            tree[v] = conquer(tree[2 * v], tree[2 * v + 1]);
+        }
+    }
+
+    void upd(int v, int l, int r, int i, I x) {
+        if (l == r) tree[v] = value(x);
+        else {
+            int middle = (l + r) / 2;
+            if (middle >= i) upd(2 * v, l, middle, i, x);
+            else upd(2 * v + 1, middle + 1, r, i, x);
+            tree[v] = conquer(tree[2 * v], tree[2 * v + 1]);
+        }
+    }
+
+    T query(int v, int l, int r, int ql, int qr) {
+        if (ql <= l && r <= qr) return tree[v];
+        else if (r < ql || qr < l) return id;
+        int middle = (l + r) / 2;
+        T left = query(2 * v, l, middle, ql, qr);
+        T right = query(2 * v + 1, middle + 1, r, ql, qr);
+        return conquer(left, right);
+    }
+};
+
+// vector<int>
+
+int mod = 1e9 + 7;
+
+int binpow(int base, int exp) {
+    if (exp == 0) return 1;
+    int half = binpow(base, exp / 2);
+    int almost = half * half % mod;
+    if (exp % 2) almost = almost * base % mod;
+    return almost;
+}
+
+signed main() {
+    improvePerformance;
+    getTest;
+
+    vector<int> fac;
+    fac.push_back(1);
+    forto(300000, i) fac.push_back(fac.back() * (i + 1) % mod);
+
+    vector<int> invfac;
+    invfac.push_back(1);
+    forto(300000, i) invfac.push_back(binpow(fac[i + 1], mod - 2));
+    
+    eachTest {
+        get(n);
+        get(k);
+        int zeroes = 0;
+        int ones = 0;
+        forto(n, i) {
+            get(x);
+            if (x) ones++;
+            else zeroes++;
+        }
+        int ans = 0;
+        for (int j = max(k - zeroes, (k + 1) / 2); j <= min(k, ones); j++) {
+            int ways1 = 1;
+            ways1 = ways1 * fac[ones] % mod;
+            ways1 = ways1 * invfac[j] % mod;
+            ways1 = ways1 * invfac[ones - j] % mod;
+
+            int ways0 = 1;
+            ways0 = ways0 * fac[zeroes] % mod;
+            ways0 = ways0 * invfac[k - j] % mod;
+            ways0 = ways0 * invfac[zeroes - (k - j)] % mod;
+
+            int here = ways0 * ways1 % mod;
+
+            ans = (ans + here) % mod;
+        }
+        out(ans);
+        out("\n");
+    }
+}

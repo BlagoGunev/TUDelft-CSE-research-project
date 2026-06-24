@@ -1,0 +1,108 @@
+/*
+    || साम्ब-सदाशिव ||
+*/
+
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp> 
+#include <ext/pb_ds/tree_policy.hpp> 
+
+using namespace std;
+using namespace chrono;
+using namespace __gnu_pbds; 
+
+using str = string;
+using ll = long long;
+using ld = long double;
+const ld Pi = 3.141592653589793238462643;
+const ld e = 2.718281828459045235360;
+const ll MOD = 1000000007;
+
+#define f(variable,s,e,j) for(ll variable = s ; variable < e ; variable+=j)
+#define fr(variable,s,e,j) for(ll variable = s ; variable > e ; variable-=j)
+#define test(n) while(n--)
+#define trav(x,y) for(auto x : y)
+#define yeah cout << "YES\n"
+#define nah cout << "NO\n"
+#define endl '\n'
+#define line "------------------------------------------"
+
+#define ordered_set tree<ll, null_type,less<ll>, rb_tree_tag,tree_order_statistics_node_update> 
+#define ordered_map tree<pr<ll,ll>, null_type,less<pr<ll,ll>>, rb_tree_tag,tree_order_statistics_node_update> 
+
+#define vec vector
+#define fi first
+#define se second
+#define pr pair
+
+#define all(a) a.begin(), a.end()
+#define allr(a) a.rbegin(), a.rend()
+
+#define MODadd(x,y,m) ((x % m) + (y % m) + m) % m
+#define MODsub(x,y,m) ((max(x,y) % m) - (min(x,y) % m) + m) % m
+#define MODmul(x,y,m) ((x % m) * (y % m)) % m
+
+#define setbits(x) __builtin_popcountll(x)
+#define trailzero(x) __builtin_ctz(x)
+
+#ifndef vipplovve
+#define debug(value) cerr << #value << " : " << value << endl;
+#else
+#define debug(value);
+#endif
+
+int main()
+{
+    #ifndef vipplovve
+        freopen("errors.txt","w",stderr);
+    #endif
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    auto beg = high_resolution_clock::now();
+
+    // The Code's Here.
+
+    ll t;
+
+    cin >> t;
+
+    test(t)
+    {
+        ll n;
+
+        cin >> n;
+
+        ll ans = 1;
+
+        while(n)
+        {
+            ll digit = n % 10;
+
+            n /= 10;
+
+            ll temp = 0;
+
+            f(x,0,digit+1,1)
+                f(y,0,digit+1,1)
+                    f(z,0,digit+1,1)
+                        if(x + y + z == digit)
+                            temp++;
+
+            ans *= temp;
+        }
+
+        cout << ans << endl;
+    }
+
+    auto end = high_resolution_clock::now();
+
+    auto duration = duration_cast <microseconds> (end - beg);
+    
+    #ifndef vipplovve
+        cerr << line << "Time Taken : " << duration.count() / 1000 << " ms." << endl << line;
+    #endif
+
+    return 0;
+}
